@@ -11,11 +11,7 @@ services:
       - "5432:5432"
 
   rabbitmq:
-    image: rabbitmq:3-management-alpine
-    volumes:
-      - ./.docker/rabbitmq/etc/:/etc/rabbitmq/
-      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
-      - ./.docker/rabbitmq/logs/:/var/log/rabbitmq/
+    image: rabbitmq:3-management
     environment:
       RABBITMQ_DEFAULT_USER: weather
       RABBITMQ_DEFAULT_PASS: weather
