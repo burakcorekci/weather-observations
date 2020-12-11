@@ -59,5 +59,8 @@ public class BalloonService {
         if (toObservation.isPresent()) {
             balloon.addToTotalDistance(currentObservation.getLocation().distance(toObservation.get().getLocation()));
         }
+        if (toObservation.isPresent() && fromObservation.isPresent()) {
+            balloon.addToTotalDistance(-fromObservation.get().getLocation().distance(toObservation.get().getLocation()));
+        }
     }
 }

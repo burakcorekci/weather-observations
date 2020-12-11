@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.0'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'com.palantir.docker' version '0.22.1'
 }
 
 group = 'com.corekcioglu'
@@ -33,5 +34,13 @@ dependencies {
 }
 
 test {
+	exclude '**/*'
 	useJUnitPlatform()
+}
+
+docker {
+	dependsOn build
+	name "${project.name}"
+	files bootJar.archivePath
+	buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
